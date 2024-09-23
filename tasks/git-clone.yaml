@@ -1,0 +1,25 @@
+apiVersion: tekton.dev/v1
+kind: Task
+metadata:
+  name: git-clone
+  namespace: env-tekton
+spec:
+  description: >-
+    to clone the code from the git
+  params:
+    - name: git-url
+      kind: string
+    - name: branch
+      kind: string
+      default: master
+    - default: 'true'
+      description: Initialize and fetch git submodules.
+      name: submodules
+      type: string
+    - default: 'true'
+      description: >-
+          Set the `http.sslVerify` global git config. Setting this to `false` is
+          not advised unless you are sure that you trust your git remote.
+      name: sslVerify
+      type: string
+
